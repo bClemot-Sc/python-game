@@ -1,5 +1,6 @@
 ### Little game with insects ###
 ## Author : Bastien Clémot
+## Python3.11
 
 
 ## ----- Libraries
