@@ -13,6 +13,7 @@ import random
 # Import pygame.locals for easier access to key coordinates
 # Updated to conform to flake8 and black standards
 from pygame.locals import (
+    RLEACCEL,
     K_UP,
     K_DOWN,
     K_LEFT,
@@ -33,8 +34,8 @@ class Player(pygame.sprite.Sprite):
     # Graphical properties of the player
     def __init__(self):
         super(Player, self).__init__() # Call the .__init__() method of sprites
-        self.surf = pygame.Surface((75, 25))
-        self.surf.fill((255, 255, 255))
+        self.surf = pygame.image.load("bee.png").convert() # load image from the computer
+        self.surf.set_colorkey((255, 255, 255), RLEACCEL) # Set the .png background to tranparent, RLEACCEL helps faster rendering
         self.rect = self.surf.get_rect()
 
     # Move the sprite based on user keypresses
@@ -63,8 +64,8 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy, self).__init__()
-        self.surf = pygame.Surface((20, 10))
-        self.surf.fill((255, 255, 255))
+        self.surf = pygame.image.load("artikuno.png").convert()
+        self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         # start in a random position on the right of the screen
         self.rect = self.surf.get_rect(
             center=(
